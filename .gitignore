@@ -1,0 +1,9 @@
+/app/app.json
+/app/node_modules
+/api/.vs
+/api/build/appsettings.json
+/api/Focus/Properties
+/api/Focus/wwwroot
+/api/Focus/.vs
+/api/Focus/bin
+/api/Focus/obj
