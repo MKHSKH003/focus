@@ -4,7 +4,7 @@ import {
   HomeStack,
   LinksStack,
   ExamPapersStack,
-  SignInStack,
+  ProfileViewStack,
   UsersStack
 } from './screen-stacks'
 import navigationOptionIcon from './navigation-option-icon'
@@ -25,7 +25,7 @@ UsersStack.navigationOptions = {
   ...navigationOptionIcon('Users','ios-people', 'md-people')
 };
 
-SignInStack.navigationOptions = {
+ProfileViewStack.navigationOptions = {
   ...navigationOptionIcon('Profile','ios-options', 'md-options')
 };
 
@@ -34,5 +34,5 @@ export default createBottomTabNavigator({
   LinksStack,
   ExamPapersStack,
   UsersStack,
-  SignInStack
+  ProfileViewStack
 });

@@ -13,17 +13,11 @@ import {
 var nameIcon = require('../../../shared/images/icons8-name-tag-16.png');
 
 export default UserLogin = ({
-    isUserLoggedIn,
-    user,
     onUserLogin,
     setLoginToggle
 }) => {
 
   const [ userDeatils, setUserDeatils] = useState({ name: '', password: '' })
-
-  const onClickListener = (viewId) => {
-    Alert.alert("Alert", "Button pressed "+viewId);
-  }
 
   return (
       <View style={styles.container}>
@@ -87,10 +81,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#DCDCDC',
+    backgroundColor: '#fff',
   },
   inputContainer: {
-      borderBottomColor: '#F5FCFF',
+      borderBottomColor: '#778899',
       backgroundColor: '#FFFFFF',
       borderBottomWidth: 1,
       width:250,

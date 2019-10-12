@@ -8,29 +8,29 @@ import {
 } from 'react-native';
 
 import { _pickImage } from '../../../shared/utils/imagesUtil'
-import Layout from '../../../shared/constants/Layout';
 
 export default ProfileView = ({
-  user,
-  updateUserAvatar
+  screenProps
 }) => {
+  console.log();
     const [ userProfile, setUserProfile] = useState({
-      id: user.Id,
-      avatar: user.Avatar
+      id: screenProps.user.Id,
+      avatar: screenProps.user.Avatar
     });
+
 
     return (
       <View style={styles.container}>
           <View style={styles.header}>
             <View style={styles.headerContent}>
-                <TouchableOpacity onPress={()=> _pickImage(userProfile, setUserProfile, updateUserAvatar) } >
+                <TouchableOpacity onPress={() => _pickImage(userProfile, setUserProfile, screenProps.updateUserAvatar) } >
                   <Image style={styles.avatar}
                     source={{ uri:  userProfile.avatar.length == 0 ? 'https://i.stack.imgur.com/l60Hf.png' : userProfile.avatar }}
                   />
                 </TouchableOpacity>
 
                 <Text style={styles.name}>
-                  {user.Name}
+                  {screenProps.user.Name}
                 </Text>
             </View>
           </View>
@@ -38,7 +38,7 @@ export default ProfileView = ({
           <View style={styles.body}>
             <View style={styles.bodyContent}>
               <Text style={styles.textInfo}>
-                {user.Email}
+                {screenProps.user.Email}
               </Text>
             </View>
           </View>
@@ -46,10 +46,14 @@ export default ProfileView = ({
     );
 }
 
+ProfileView.navigationOptions = {
+  title: 'Profile',
+};
+
 const styles = StyleSheet.create({
   header:{
     backgroundColor: "#778899",
-    marginTop: Layout.window.height/2
+    //marginTop: Layout.window.height/2
   },
   headerContent:{
     padding:30,

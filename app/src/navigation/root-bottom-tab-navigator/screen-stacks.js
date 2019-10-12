@@ -3,7 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from '../../components/home/components/page';
 import LinksScreen from '../../components/links/page';
 import ExamPapersScreen from '../../components/exam-papers/page';
-import SignInScreen from '../../components/sign-in/components/page';
+import ProfileView from '../../components/user-profile/';
 import UsersScreen from '../../components/users/components/page';
 
 export const HomeStack = createStackNavigator({
@@ -29,6 +29,6 @@ export const AuthStack = createStackNavigator({
     UserProfile: 'UserProfileScreen'
 });
 
-export const SignInStack = createStackNavigator({
-    SignIn: SignInScreen
+export const ProfileViewStack = createStackNavigator({
+    ProfileView: ProfileView
 });

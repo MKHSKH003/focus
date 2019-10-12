@@ -14,6 +14,7 @@ namespace Focus.Entities
         }
 
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<ExamPaper> ExamPapers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -42,6 +43,25 @@ namespace Focus.Entities
                     .IsUnicode(false);
 
                 entity.Property(e => e.Avatar)
+                    .IsRequired()
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<ExamPaper>(entity =>
+            {
+                entity.ToTable("ExamPaper", "3XCpN5NUQo");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Url)
                     .IsRequired()
                     .HasMaxLength(1000)
                     .IsUnicode(false);
