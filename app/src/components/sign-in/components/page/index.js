@@ -10,10 +10,11 @@ import { loginBaseUrl, usersBaseUrl } from '../../../../shared/constants/api-sel
 import SignIn from './sign-in';
 
 export default Container = ({
+
 }) => {
     const [user, setUser] = useState();
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-    
+
     const login = useApi({
         action: loginDetails => loginApi.login(loginBaseUrl, loginDetails),
         initialValue: [],
@@ -73,7 +74,7 @@ export default Container = ({
             user={user}
             onUserLogin={login} 
             onUserSignup={signup}
-            updateUserAvatar={updateUserAvatar}
+            updateUserAvatar={updateUserAvatar.execute}
         />
     );
 };

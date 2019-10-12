@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Buffers;
 using System.Collections.Generic;
 using System.IO;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Focus.Models.Configuration;
 using Focus.Services;
+using Focus.Services.ExamPapers;
 using Focus.Services.Login;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
@@ -50,6 +52,7 @@ namespace Focus
             // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IUsersService, UsersService>();
+            services.AddScoped<IExamPapersService, ExamPapersService>();
             services.AddScoped<ICipherService, CipherService>();
             services.AddCors();
             services.AddMvc(options =>

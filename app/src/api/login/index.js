@@ -18,7 +18,7 @@ export const signup = async (baseUrl, userDetails) =>
         headers: {
             'Content-Type': 'application/json'
     }
-    }).then((response) => response.json())
+    }).then(response => response.json())
 
 export const logout = (loginBaseUrl, username) =>
     fetch(loginBaseUrl + `logout?username=${username}`).then(response => response);

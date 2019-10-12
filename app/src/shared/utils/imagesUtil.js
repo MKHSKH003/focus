@@ -12,13 +12,12 @@ export const _pickImage = async (userProfile, setUserProfile, updateUserAvatar) 
       allowsEditing: true,
       aspect: [4, 3],
     });
-
     if (!result.cancelled) {
       setUserProfile({
         ...userProfile,
         avatar: result.uri
       })
-      uploadAndUpdate(result.uri, userProfile, updateUserAvatar)
+      uploadAndUpdate(result.uri, userProfile, updateUserAvatar);
     }
   }
   else {
@@ -47,7 +46,7 @@ export const uploadAndUpdate = async (uri, userProfile, updateUserAvatar) => {
     var ref = firebase.storage().ref().child("images/"+appsettings.Environment+"/" + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15));
     const snapshot = await ref.put(blob);
 
-    updateUserAvatar.execute({
+    updateUserAvatar({
       ...userProfile,
       avatar: await snapshot.ref.getDownloadURL()
     });

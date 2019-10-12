@@ -11,10 +11,10 @@ import {
 } from 'react-native';
 
 export default Users = ({
-    getUsers
+  getUsers
 }) => {
 
-  renderItem = ({item}) => {
+  renderItem = ({ item }) => {
     return (
       <TouchableOpacity>
         <View style={styles.row}>
@@ -33,17 +33,15 @@ export default Users = ({
     );
   }
 
-    return(
-      <View style={{ flex: 1 }} >
-        <FlatList 
+  return (
+    <View style={{ flex: 1 }} >
+      <FlatList 
           data={getUsers.data}
-          keyExtractor = {(item) => {
-            return item.Id+'';
-          }}
+          keyExtractor = {item =>  item.Id+''}
           renderItem={this.renderItem}
         />
-      </View>
-    );
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -70,7 +68,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#222',
     fontSize: 18,
-    width:170,
+    width: 170,
   },
   mblTxt: {
     fontWeight: '200',
