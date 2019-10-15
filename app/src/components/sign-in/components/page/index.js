@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert } from 'react-native';
-import {WSnackBar} from 'react-native-smart-tip';
+import { WSnackBar } from 'react-native-smart-tip';
 
 import useApi from '../../../../shared/components/react-use-api'; 
 
@@ -25,7 +25,7 @@ export default Container = ({
                 data: "Welcome "+user.Name,
                 backgroundColor: '#00ff00',
                 position: WSnackBar.position.TOP
-            })
+            });
             setUser(user);
             setIsUserLoggedIn(true);
         },

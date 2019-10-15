@@ -11,6 +11,7 @@ import { examPapersBaseUrl } from '../../../shared/constants/api-selectors'
 import ExamPapersView from './View';
 
 export default Container = ({
+    screenProps
 }) => {
     const [uploadInProgress, setUploadInProgress] = useState(false);
 
@@ -50,6 +51,7 @@ export default Container = ({
                examPapers={getExamPapers.data}
                uploadExamPaper={uploadExamPaper}
                setUploadInProgress={setUploadInProgress}
+               currentUser={screenProps.user}
             />
         </>
     );

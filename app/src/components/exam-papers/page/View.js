@@ -10,6 +10,7 @@ import {
     Linking
 } from 'react-native';
 import { SearchBar } from 'react-native-elements';
+import { WSnackBar } from 'react-native-smart-tip';
 
 import Layout from '../../../shared/constants/Layout';
 import _pickDocument from '../document-picker-util';
@@ -18,10 +19,16 @@ var uploadPdf = require('../../../shared/images/upload-pdf.png');
 const ExamPapers = ({
     examPapers,
     uploadExamPaper,
-    setUploadInProgress
+    setUploadInProgress,
+    currentUser
 }) => {
     const [search, setSearch] = useState('');
-
+   
+    accessDenied = () => WSnackBar.show({ 
+        data: "Access denied",
+        backgroundColor: '#ff0000',
+        position: WSnackBar.position.TOP
+    });
     renderItem = ({ item }) => {
         return (
             <TouchableOpacity onPress={() => Linking.openURL(item.Url)}>
@@ -45,7 +52,7 @@ const ExamPapers = ({
                     />
                 </View>
                 <View style={styles.headerContent}>
-                    <TouchableOpacity onPress={() => _pickDocument({uploadExamPaper, setUploadInProgress})}>
+                    <TouchableOpacity onPress={() => currentUser.IsAdmin == 1 ? _pickDocument({uploadExamPaper, setUploadInProgress}) : accessDenied()}>
                         <Image style={styles.avatar} source={(uploadPdf)} />
                     </TouchableOpacity>
                 </View>
