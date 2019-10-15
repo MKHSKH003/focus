@@ -37,6 +37,11 @@ namespace Focus.Entities
                    .HasMaxLength(50)
                    .IsUnicode(false);
 
+                entity.Property(e => e.IsAdmin)
+                    .IsRequired()
+                    .HasColumnType("bit(1)")
+                    .HasDefaultValueSql("b'0'");
+
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasMaxLength(1000)

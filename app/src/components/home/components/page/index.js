@@ -31,7 +31,7 @@ export const HomeScreen = ({
         <View style={styles.getStartedContainer}>
           <Text style={styles.developmentModeText}>
             Focus Matric Mentor is a non profit organization
-            that seeks to make a different through uplifting
+            that seeks to make a difference through uplifting
             the youth so that they are empowered to be active
             citizens in their community. 
           </Text>

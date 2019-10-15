@@ -22,13 +22,15 @@ namespace Focus.Services.Login
         {
             var dbUser = _FocusDbContext.Users.SingleOrDefault(u => u.Name == user.Name && _cipherService.Decrypt(u.Password) == user.Password);
 
-            return dbUser == null ? new Models.User()
+            return dbUser == null 
+                ? new Models.User()
                 : new Models.User()
                 {
                     Id = dbUser.Id,
                     Name = dbUser.Name,
                     Email = dbUser.Email,
-                    Avatar = dbUser.Avatar
+                    Avatar = dbUser.Avatar,
+                    IsAdmin = dbUser.IsAdmin
                 };
         }
 

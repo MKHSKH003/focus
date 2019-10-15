@@ -57,7 +57,7 @@ export default Signup = ({
               })}
             />
         </View>
-
+        
         <TouchableHighlight 
           style={[styles.buttonContainer, styles.loginButton]}
           disabled={!userDetails.name || !userDetails.password || !userDetails.email}
