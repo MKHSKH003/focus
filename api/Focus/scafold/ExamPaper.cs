@@ -1,6 +1,9 @@
-﻿namespace Focus.Entities
+﻿using System;
+using System.Collections.Generic;
+
+namespace Focus.scafold
 {
-    public class ExamPaper
+    public partial class ExamPaper
     {
         public int Id { get; set; }
         public string Name { get; set; }

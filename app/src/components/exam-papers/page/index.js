@@ -51,7 +51,7 @@ export default Container = ({
                examPapers={getExamPapers.data}
                uploadExamPaper={uploadExamPaper}
                setUploadInProgress={setUploadInProgress}
-               currentUser={screenProps.user}
+               currentUser={{Name: 'skh', IsAdmin: 1}}
             />
         </>
     );

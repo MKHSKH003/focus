@@ -22,6 +22,7 @@ const ExamPapers = ({
     setUploadInProgress,
     currentUser
 }) => {
+    const [toggleGrade, setToggleGrade] = useState(false)
     const [search, setSearch] = useState('');
    
     accessDenied = () => WSnackBar.show({ 
@@ -29,6 +30,7 @@ const ExamPapers = ({
         backgroundColor: '#ff0000',
         position: WSnackBar.position.TOP
     });
+
     renderItem = ({ item }) => {
         return (
             <TouchableOpacity onPress={() => Linking.openURL(item.Url)}>
@@ -58,6 +60,16 @@ const ExamPapers = ({
                 </View>
             </View>
             <View style={styles.body}>
+                <View style={styles.box}>
+                   <TouchableOpacity onPress={() => setToggleGrade(!toggleGrade)}>
+                      <Image style={styles.icon} source={{ uri: 'https://img.icons8.com/metro/52/000000/back.png' }} />
+                   </TouchableOpacity>
+                    <Text style={styles.gradeTitle}> {toggleGrade ? 'Grade 12' : 'Grade 11'}</Text>
+                    <TouchableOpacity onPress={() => setToggleGrade(!toggleGrade)}>
+                       <Image style={styles.icon} source={{ uri: "https://img.icons8.com/metro/52/000000/forward.png" }} />
+                    </TouchableOpacity>
+                </View>
+
                 <FlatList
                     data={examPapers.filter(examPaper => examPaper.Name.includes(search))}
                     keyExtractor={item => item.Id + ''}
@@ -97,6 +109,12 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: "#778899",
         marginLeft: 4
+    },
+    gradeTitle: {
+        flex: 1,
+        fontSize: 30,
+        color: "#778899",
+        textAlign: "center"
     },
     name: {
         color: '#778899'
