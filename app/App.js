@@ -6,7 +6,6 @@ import { StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Toast, { DURATION } from 'react-native-easy-toast'
 
-import AppNavigator from './src/navigation/'; // './navigation/AppNavigator'; //
 import Login from './src/components/sign-in/components/page/';
 
 export default function App(props) {

@@ -11,13 +11,13 @@ import { _pickImage } from '../../shared/utils/imagesUtil'
 import Layout from '../../shared/constants/Layout';
 
 export default ProfileView = ({
-  user,
+  currentUser,
   updateUserAvatar
 }) => {
   console.log();
   const [userProfile, setUserProfile] = useState({
-    id: user.Id,
-    avatar: user.Avatar
+    id: currentUser.Id,
+    avatar: currentUser.Avatar
   });
 
 
@@ -32,14 +32,14 @@ export default ProfileView = ({
           </TouchableOpacity>
 
           <Text style={styles.name}>
-            {user.Name}
+            {currentUser.Name}
           </Text>
         </View>
       </View>
 
       <View style={styles.bodyContent}>
         <Text style={styles.textInfo}>
-          {user.Email}
+          {currentUser.Email}
         </Text>
       </View>
     </View>

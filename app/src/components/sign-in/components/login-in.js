@@ -17,7 +17,7 @@ export default UserLogin = ({
     setLoginToggle
 }) => {
 
-  const [ userDeatils, setUserDeatils] = useState({ name: '', password: '' })
+  const [ userDeatils, setUserDeatils] = useState({ name: 'skhumbuzo', password: 'skhumbuzo' })
 
   return (
       <View style={styles.container}>

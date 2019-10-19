@@ -1,6 +1,7 @@
 ﻿using Focus.Entities;
 using Focus.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,8 @@ namespace Focus.Services.ExamPapers
             var dbExamPaper = new ExamPaper()
             {
                 Name = examPaper.Name,
-                Url = examPaper.Url
+                Url = examPaper.Url,
+                GradeId = examPaper.GradeId == 0 ? 1 : examPaper.GradeId 
             };
 
             _focusDbContext.Add(dbExamPaper);

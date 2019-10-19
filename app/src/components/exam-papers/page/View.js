@@ -10,10 +10,11 @@ import {
     Linking
 } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import { WSnackBar } from 'react-native-smart-tip';
 
 import Layout from '../../../shared/constants/Layout';
 import _pickDocument from '../document-picker-util';
+import { onError } from '../../../shared/components/notifications';
+
 var uploadPdf = require('../../../shared/images/upload-pdf.png');
 
 const ExamPapers = ({
@@ -22,13 +23,9 @@ const ExamPapers = ({
     setUploadInProgress,
     currentUser
 }) => {
+    const [gradeID, setToggleGrade] = useState(1)
     const [search, setSearch] = useState('');
    
-    accessDenied = () => WSnackBar.show({ 
-        data: "Access denied",
-        backgroundColor: '#ff0000',
-        position: WSnackBar.position.TOP
-    });
     renderItem = ({ item }) => {
         return (
             <TouchableOpacity onPress={() => Linking.openURL(item.Url)}>
@@ -52,14 +49,24 @@ const ExamPapers = ({
                     />
                 </View>
                 <View style={styles.headerContent}>
-                    <TouchableOpacity onPress={() => currentUser.IsAdmin == 1 ? _pickDocument({uploadExamPaper, setUploadInProgress}) : accessDenied()}>
+                    <TouchableOpacity onPress={() => currentUser.IsAdmin == 1 ? _pickDocument({ uploadExamPaper, setUploadInProgress, gradeID }) : onError("Access denied")}>
                         <Image style={styles.avatar} source={(uploadPdf)} />
                     </TouchableOpacity>
                 </View>
             </View>
             <View style={styles.body}>
+                <View style={styles.box}>
+                   <TouchableOpacity onPress={() => setToggleGrade(1)}>
+                      <Image style={styles.icon} source={{ uri: 'https://img.icons8.com/metro/52/000000/back.png' }} />
+                   </TouchableOpacity>
+                    <Text style={styles.gradeTitle}> {gradeID == 1 ? 'Grade 12' : 'Grade 11'}</Text>
+                    <TouchableOpacity onPress={() => setToggleGrade(2)}>
+                       <Image style={styles.icon} source={{ uri: "https://img.icons8.com/metro/52/000000/forward.png" }} />
+                    </TouchableOpacity>
+                </View>
+
                 <FlatList
-                    data={examPapers.filter(examPaper => examPaper.Name.includes(search))}
+                    data={examPapers.filter(examPaper => examPaper.Name.includes(search) && examPaper.GradeId == gradeID)}
                     keyExtractor={item => item.Id + ''}
                     renderItem={this.renderItem}
                 />
@@ -97,6 +104,12 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: "#778899",
         marginLeft: 4
+    },
+    gradeTitle: {
+        flex: 1,
+        fontSize: 30,
+        color: "#778899",
+        textAlign: "center"
     },
     name: {
         color: '#778899'

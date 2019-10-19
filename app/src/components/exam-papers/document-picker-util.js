@@ -1,26 +1,24 @@
-import { WSnackBar } from 'react-native-smart-tip';
 import * as DocumentPicker from 'expo-document-picker';
+import { onError } from '../../shared/components/notifications';
 
 import { getFirebaseUrl } from '../../shared/utils/documents';
 
 const _pickDocument = async ({
     uploadExamPaper,
-    setUploadInProgress
+    setUploadInProgress,
+    gradeID
 }) => {
     let result = await DocumentPicker.getDocumentAsync({});
 
     if (result.type != "cancel") {
         if (result.name.split('.')[1] != 'pdf')
-            WSnackBar.show({
-                data: 'Incorrect file type.',
-                backgroundColor: '#ff0000',
-                position: WSnackBar.position.TOP
-            })
+            onError('Incorrect file type.')
         else {
             setUploadInProgress(true);
             uploadExamPaper.execute({
                 name: result.name.split('.')[0],
-                url: await getFirebaseUrl(result.uri, "documents/")
+                url: await getFirebaseUrl(result.uri, "documents/"),
+                gradeID: gradeID
             });
         }
     }

@@ -6,34 +6,27 @@ import useApi from '../../../../shared/components/react-use-api';
 
 import { loginApi, usersApi } from '../../../../api';
 import { loginBaseUrl, usersBaseUrl } from '../../../../shared/constants/api-selectors'
+import { onSuccess, onError } from '../../../../shared/components/notifications';
 
 import SignIn from './sign-in';
 
 export default Container = ({
 
 }) => {
-    const [user, setUser] = useState();
+    const [currentUser, setCurrentUser] = useState();
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
     const login = useApi({
         action: loginDetails => loginApi.login(loginBaseUrl, loginDetails),
         initialValue: [],
         defer: true,
-        onSuccess: user => {
-            if(user.Name == null) throw Error("Incorrect login details");
-            WSnackBar.show({ 
-                data: "Welcome "+user.Name,
-                backgroundColor: '#00ff00',
-                position: WSnackBar.position.TOP
-            });
-            setUser(user);
+        onSuccess: currentUser => {
+            if(currentUser.Name == null) throw Error("Incorrect login details");
+            onSuccess("Welcome "+currentUser.Name);
+            setCurrentUser(currentUser);
             setIsUserLoggedIn(true);
         },
-        onError: e => WSnackBar.show({ 
-            data: e.message,
-            backgroundColor: '#ff0000',
-            position: WSnackBar.position.TOP
-        })
+        onError: e => onError(e.message)
     }, []);
 
     const signup = useApi({
@@ -42,36 +35,24 @@ export default Container = ({
         defer: true,
         onSuccess: userSignup => {
             if(userSignup.user == null) throw Error(userSignup.message);
-             WSnackBar.show({
-                data: "Welcome "+userSignup.user.Name,
-                backgroundColor: '#00ff00',
-                position: WSnackBar.position.TOP
-            })
-            setUser(userSignup.user);
+            onSuccess("Welcome "+userSignup.user.Name)
+            setCurrentUser(userSignup.user);
             setIsUserLoggedIn(true);
         },
-        onError: e => WSnackBar.show({ 
-            data: e.message,
-            backgroundColor: '#ff0000',
-            position: WSnackBar.position.TOP
-        })
+        onError: e => onError(e.message)
     }, []);
 
     const updateUserAvatar = useApi({
-        action: user => usersApi.updateUserAvatar(usersBaseUrl, user),
+        action: currentUser => usersApi.updateUserAvatar(usersBaseUrl, currentUser),
         initialValue: [],
         defer: true,
-        onError: e => WSnackBar.show({ 
-            data: e.message,
-            backgroundColor: '#ff0000',
-            position: WSnackBar.position.TOP
-        })
+        onError: e => onError(e.message)
     }, []);
 
     return ( 
         <SignIn  
             isUserLoggedIn={isUserLoggedIn}
-            user={user}
+            currentUser={currentUser}
             onUserLogin={login} 
             onUserSignup={signup}
             updateUserAvatar={updateUserAvatar.execute}
