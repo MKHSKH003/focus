@@ -6,7 +6,6 @@ import { StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Toast, { DURATION } from 'react-native-easy-toast'
 
-import ExamPapersScreen from './src/components/exam-papers/page';
 import Login from './src/components/sign-in/components/page/';
 
 export default function App(props) {
@@ -23,7 +22,7 @@ export default function App(props) {
   } else {
     return (
       <View style={styles.container}>
-        <ExamPapersScreen />
+        <Login />
         <Toast id="toast" />
       </View>
     );

@@ -15,6 +15,7 @@ namespace Focus.Entities
 
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<ExamPaper> ExamPapers { get; set; }
+        public virtual DbSet<Grade> Grades { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -57,8 +58,15 @@ namespace Focus.Entities
             {
                 entity.ToTable("ExamPaper", "3XCpN5NUQo");
 
+                entity.HasIndex(e => e.GradeId)
+                    .HasName("FK_ExamPaper_Grade");
+
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.GradeId)
+                    .HasColumnName("GradeID")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.Name)
@@ -69,6 +77,26 @@ namespace Focus.Entities
                 entity.Property(e => e.Url)
                     .IsRequired()
                     .HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Grade)
+                    .WithMany(p => p.ExamPaper)
+                    .HasForeignKey(d => d.GradeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ExamPaper_Grade");
+            });
+
+            modelBuilder.Entity<Grade>(entity =>
+            {
+                entity.ToTable("Grade", "3XCpN5NUQo");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasMaxLength(50)
                     .IsUnicode(false);
             });
         }

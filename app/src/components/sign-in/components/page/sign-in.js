@@ -13,7 +13,7 @@ import ProfileView from '../profile-view';
 
 export default SignIn = ({
   isUserLoggedIn,
-  user,
+  currentUser,
   onUserLogin,
   onUserSignup,
   updateUserAvatar
@@ -25,7 +25,7 @@ export default SignIn = ({
       {isUserLoggedIn
         ? <AppNavigator
             screenProps={{
-              user,
+              currentUser,
               updateUserAvatar
             }}
           />

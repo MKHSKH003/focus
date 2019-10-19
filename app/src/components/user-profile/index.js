@@ -25,7 +25,7 @@ export default Container = ({
 
     return ( 
         <UserProfile  
-            user={screenProps.user}
+            currentUser={screenProps.currentUser}
             updateUserAvatar={updateUserAvatar.execute}
         />
     );
