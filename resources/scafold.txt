@@ -1,1 +1,0 @@
-Scaffold-DbContext "Server=remotemysql.com;Database=3XCpN5NUQo;Uid=3XCpN5NUQo;Pwd=SSbigxgXcu;SSL Mode=None;" MySql.Data.EntityFrameworkCore -OutputDir scafold -Tables User_Dev_20191310 -f
