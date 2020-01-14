@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 
 import { _pickImage } from '../../shared/utils/imagesUtil'
-import Layout from '../../shared/constants/Layout';
 
 export default ProfileView = ({
   currentUser,
@@ -52,12 +51,11 @@ ProfileView.navigationOptions = {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: "#778899",
-    //marginTop: Layout.window.height/2
+    backgroundColor: "#778899"
   },
   headerContent: {
     padding: 30,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   avatar: {
     width: 130,
@@ -65,21 +63,20 @@ const styles = StyleSheet.create({
     borderRadius: 63,
     borderWidth: 4,
     borderColor: "white",
-    marginBottom: 10,
+    marginBottom: 10
   },
   name: {
     fontSize: 22,
     color: "#FFFFFF",
-    fontWeight: '600',
+    fontWeight: '600'
   },
   bodyContent: {
-    //flex: 1,
     alignItems: 'center',
-    padding: 30,
+    padding: 30
   },
   textInfo: {
     fontSize: 10,
     marginTop:30,
-    color: "#696969",
+    color: "#696969"
   }
 });
