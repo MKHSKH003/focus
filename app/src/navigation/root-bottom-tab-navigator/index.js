@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from 'react-navigation';
 
 import { 
   HomeStack,
-  LinksStack,
+  ChatStack,
   ExamPapersStack,
   ProfileViewStack,
   UsersStack
@@ -13,8 +13,8 @@ HomeStack.navigationOptions = {
   ...navigationOptionIcon('Home','ios-information-circle', 'md-information-circle')
 };
 
-LinksStack.navigationOptions = {
-  ...navigationOptionIcon('Links','ios-link', 'md-link')
+ChatStack.navigationOptions = {
+  ...navigationOptionIcon('ChatRoom','ios-chatboxes', 'md-chatboxes')
 };
 
 ExamPapersStack.navigationOptions = {
@@ -31,7 +31,7 @@ ProfileViewStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  ChatStack,
   ExamPapersStack,
   UsersStack,
   ProfileViewStack

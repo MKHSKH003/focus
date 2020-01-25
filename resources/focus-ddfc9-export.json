@@ -1,0 +1,69 @@
+{
+  "chat-rooms" : {
+    "everyone" : {
+      "messages" : {
+        "-Ly_MILnL1E9dyAgmrHE" : {
+          "_id" : 83277551986118750,
+          "text" : "Welcome to the chat room everyone.",
+          "createdAt" : 1579027347439,
+          "user" : {
+			"_id": 1,
+			"avatar": "https://firebasestorage.googleapis.com/v0/b/focus-ddfc9.appspot.com/o/images%2FProduction%2Fv5mw6nslggow6rynx4c67?alt=media&token=a6162f4e-acd0-4e36-b7e2-400b59e590e4",
+			"name": "Skhumbuzo"
+		  }
+        },
+
+        "-Lz6-PuBXkqNPAizbt8E" : {
+          "_id" : 69318501062294110,
+          "text" : "Hello ",
+          "createdAt" : 1579591774753,
+          "user" : {
+			  "_id": 146,
+			  "name": "Senamile",
+			  "avatar": ""
+		  }
+        },
+        "-Lz7yeaglLACuFtAIHVt" : {
+          "_id" : 83277551986118750,
+          "text" : "Can’t see your face",
+          "createdAt" : 1579624868845,
+          "user" : {
+			"_id": 1,
+			"avatar": "https://firebasestorage.googleapis.com/v0/b/focus-ddfc9.appspot.com/o/images%2FProduction%2Fv5mw6nslggow6rynx4c67?alt=media&token=a6162f4e-acd0-4e36-b7e2-400b59e590e4",
+			"name": "Skhumbuzo"
+		  }
+        },
+        "-Lz8UTojdoofV_nPxod-" : {
+		  "_id" : 35209273351280036,
+          "text" : "Hii theee",
+          "createdAt" : 1579633471241,
+          "user" : {
+			  "_id": 148,
+			  "name": "Sharon",
+			  "avatar": ""
+		  }
+        },
+        "-Lz8UWNcAltpyxbImQkY" : {
+		  "_id" : 32836980532732396,
+          "text" : "Hii theee*",
+          "createdAt" : 1579633482908,
+          "user" : {
+			  "_id": 148,
+			  "name": "Sharon",
+			  "avatar": ""
+		  }
+        },
+        "-LzMKlXuZtSUo-igvmJT" : {
+		  "_id" : 79191968706239710,
+          "text" : "What's up y'all",
+          "createdAt" : 1579865808692,
+          "user" : {
+			  "_id": 152,
+			  "name": "Ntobeko Maduna",
+			  "avatar": ""
+		  }
+        }
+      }
+    }
+  }
+}
